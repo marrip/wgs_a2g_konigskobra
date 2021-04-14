@@ -12,7 +12,15 @@ properties:
             type: string
           tag:
             type: string
+      wgs_somatic_snp_viper:
+        type: object
+        properties:
+          url:
+            type: string
+          tag:
+            type: string
     required:
       - wgs_std_viper
+      - wgs_somatic_snp_viper
   required:
     - workflows

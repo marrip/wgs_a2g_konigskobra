@@ -40,7 +40,13 @@ swf_dir= "{workdir}/subworkflows".format(workdir=work_dir)
 
 get_all_subworkflows(config, swf_dir)
 
+subworkflow wgs_somatic_snp_viper:
+    workdir: work_dir
+    snakefile: "{swfdir}/wgs_somatic_snp_viper/Snakefile".format(swfdir=swf_dir)
+    configfile: "{workdir}/config.yaml".format(workdir=work_dir)
+
 subworkflow wgs_std_viper:
     workdir: work_dir
     snakefile: "{swfdir}/wgs_std_viper/Snakefile".format(swfdir=swf_dir)
     configfile: "{workdir}/config.yaml".format(workdir=work_dir)
+
