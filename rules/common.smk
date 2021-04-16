@@ -1,5 +1,6 @@
-import git 
+import git
 import os
+import pandas as pd
 from pathlib import Path
 from snakemake.utils import validate
 from snakemake.utils import min_version
@@ -13,8 +14,12 @@ min_version("5.32.0")
 
 configfile: "config.yaml"
 
+
 validate(config, schema="../schemas/config.schema.yaml")
 
+samples = pd.read_table(config["samples"]).set_index("sample", drop=False)
+
+validate(samples, schema="../schemas/samples.schema.yaml")
 
 ### Import subworkflows
 
@@ -27,26 +32,30 @@ def get_subworkflow(name, url, tag, target):
         print("Successfully retrieved {name} version {tag}".format(name=name, tag=tag))
     else:
         git.Git(repo_dir).checkout(tag)
-        print("Successfully checked out {name} version {tag}".format(name=name, tag=tag))
+        print(
+            "Successfully checked out {name} version {tag}".format(name=name, tag=tag)
+        )
     return
+
 
 def get_all_subworkflows(config, target):
     for workflow in config["workflows"]:
-        get_subworkflow(workflow, config["workflows"][workflow]["url"], config["workflows"][workflow]["tag"], target)
+        get_subworkflow(
+            workflow,
+            config["workflows"][workflow]["url"],
+            config["workflows"][workflow]["tag"],
+            target,
+        )
+
 
 work_dir = os.getcwd()
 
-swf_dir= "{workdir}/subworkflows".format(workdir=work_dir)
+swf_dir = "{workdir}/subworkflows".format(workdir=work_dir)
 
 get_all_subworkflows(config, swf_dir)
 
-subworkflow wgs_somatic_snp_viper:
-    workdir: work_dir
-    snakefile: "{swfdir}/wgs_somatic_snp_viper/Snakefile".format(swfdir=swf_dir)
-    configfile: "{workdir}/config.yaml".format(workdir=work_dir)
 
 subworkflow wgs_std_viper:
     workdir: work_dir
     snakefile: "{swfdir}/wgs_std_viper/Snakefile".format(swfdir=swf_dir)
     configfile: "{workdir}/config.yaml".format(workdir=work_dir)
-
