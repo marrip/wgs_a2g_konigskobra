@@ -21,6 +21,5 @@ properties:
             type: string
     required:
       - wgs_std_viper
-      - wgs_somatic_snp_viper
   required:
     - workflows
