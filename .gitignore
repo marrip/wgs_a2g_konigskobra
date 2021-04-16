@@ -1,0 +1,5 @@
+**/analysis_output
+**/.cache
+**/.java
+**/.snakemake
+**/subworkflows

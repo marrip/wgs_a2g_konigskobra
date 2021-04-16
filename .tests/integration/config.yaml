@@ -1,30 +1,23 @@
 workflows:
   wgs_std_viper:
     url: "https://github.com/marrip/wgs_std_viper.git"
-    tag: "1.0.0"
-  wgs_somatic_snp_viper:
-    url: "https://github.com/marrip/wgs_somatic_snp_viper.git"
-    tag: "develop"
+    tag: "1.0.1"
 
 samples: "samples.tsv"
 units: "units.tsv"
 
 reference:
-  fasta: "reference/WASH7P.fna"
-  loci: "reference/WASH7P.loci.txt"
-  sites: "reference/known_indels.vcf"
-  intervals: "reference/WASH7P.interval_list"
   adapter:
-    fasta: "reference/TruSeq3-PE.fa"
     fwd: "TACACTCTTTCCCTACACGACGCTCTTCCGATCT"
     rev: "GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT"
+  fasta: "reference/WASH7P.fna"
+  intervals: "reference/WASH7P.interval_list"
+  loci: "reference/WASH7P.loci.txt"
+  sites: "reference/known_indels.vcf"
 
 tools:
-  bwa: "docker://marrip/bwa:0.7.15"
-  common: "docker://marrip/common:1.0.0"
+  common: "docker://marrip/common:1.1.0"
   cutadapt: "docker://marrip/cutadapt:3.3"
   fastqc: "docker://marrip/fastqc:0.11.9"
   gatk: "docker://broadinstitute/gatk:4.2.0.0"
   mosdepth: "docker://marrip/mosdepth:v0.3.1"
-  python: "docker://python:3.9.1-slim-buster"
-  ubuntu: "docker://ubuntu:18.04"
