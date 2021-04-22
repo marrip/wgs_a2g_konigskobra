@@ -2,6 +2,9 @@ workflows:
   wgs_std_viper:
     url: "https://github.com/marrip/wgs_std_viper.git"
     tag: "1.0.1"
+  wgs_somatic_cnv_sv_viper:
+    url: "https://github.com/marrip/wgs_somatic_cnv_sv_viper.git"
+    tag: "main"
 
 samples: "samples.tsv"
 units: "units.tsv"
@@ -16,8 +19,11 @@ reference:
   sites: "reference/known_indels.vcf"
 
 tools:
+  cnvnator: "docker://marrip/cnvnator:0.4.1"
   common: "docker://marrip/common:1.1.0"
   cutadapt: "docker://marrip/cutadapt:3.3"
   fastqc: "docker://marrip/fastqc:0.11.9"
   gatk: "docker://broadinstitute/gatk:4.2.0.0"
+  manta: "docker://marrip/manta:v1.6.0"
   mosdepth: "docker://marrip/mosdepth:v0.3.1"
+  tiddit: "docker://marrip/tiddit:2.12.1"
