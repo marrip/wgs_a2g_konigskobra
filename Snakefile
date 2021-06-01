@@ -6,6 +6,9 @@ rule all:
         wgs_std_viper(
             expand("analysis_output/{sample}/wgs_std_viper.ok", sample=samples.index)
         ),
+        wgs_somatic_snp_viper(
+            expand("analysis_output/{sample}/wgs_somatic_snp_viper.ok", sample=samples.index)
+        ),
         wgs_somatic_cnv_sv_viper(
             expand("analysis_output/{sample}/wgs_somatic_cnv_sv_viper.ok", sample=samples.index)
         ),

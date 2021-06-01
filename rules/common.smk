@@ -60,6 +60,11 @@ subworkflow wgs_std_viper:
     snakefile: "{swfdir}/wgs_std_viper/Snakefile".format(swfdir=swf_dir)
     configfile: "{workdir}/config.yaml".format(workdir=work_dir)
 
+subworkflow wgs_somatic_snp_viper:
+    workdir: work_dir
+    snakefile: "{swfdir}/wgs_somatic_snp_viper/Snakefile".format(swfdir=swf_dir)
+    configfile: "{workdir}/config.yaml".format(workdir=work_dir)
+
 subworkflow wgs_somatic_cnv_sv_viper:
     workdir: work_dir
     snakefile: "{swfdir}/wgs_somatic_cnv_sv_viper/Snakefile".format(swfdir=swf_dir)
