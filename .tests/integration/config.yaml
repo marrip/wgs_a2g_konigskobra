@@ -1,13 +1,13 @@
 workflows:
   wgs_std_viper:
     url: "https://github.com/marrip/wgs_std_viper.git"
-    tag: "1.0.1"
+    tag: "1.0.2"
   wgs_somatic_snp_viper:
     url: "https://github.com/marrip/wgs_somatic_snp_viper.git"
     tag: "main"
   wgs_somatic_cnv_sv_viper:
     url: "https://github.com/marrip/wgs_somatic_cnv_sv_viper.git"
-    tag: "main"
+    tag: "1.0.0"
 
 samples: "samples.tsv"
 units: "units.tsv"
@@ -17,6 +17,7 @@ reference:
     fwd: "TACACTCTTTCCCTACACGACGCTCTTCCGATCT"
     rev: "GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT"
   fasta: "reference/WASH7P.fna"
+  dct: "reference/WASH7P.dict"
   intervals: "reference/WASH7P.interval_list"
   loci: "reference/WASH7P.loci.txt"
   sites: "reference/known_indels.vcf"
@@ -48,5 +49,6 @@ tools:
   gatk: "docker://broadinstitute/gatk:4.2.0.0"
   manta: "docker://marrip/manta:v1.6.0"
   mosdepth: "docker://marrip/mosdepth:v0.3.1"
+  python: "docker://python:3.10-rc-slim-buster"
   tiddit: "docker://marrip/tiddit:2.12.1"
   vardict: "docker://marrip/vardict:1.8.2"
