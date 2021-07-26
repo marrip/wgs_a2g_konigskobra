@@ -6,27 +6,14 @@ properties:
     type: object
     properties:
       wgs_std_viper:
-        type: object
-        properties:
-          url:
-            type: string
-          tag:
-            type: string
+        type: string
       wgs_somatic_snp_viper:
-        type: object
-        properties:
-          url:
-            type: string
-          tag:
-            type: string
+        type: string
       wgs_somatic_cnv_sv_viper:
-        type: object
-        properties:
-          url:
-            type: string
-          tag:
-            type: string
+        type: string
     required:
       - wgs_std_viper
+      - wgs_somatic_snp_viper
+      - wgs_somatic_cnv_sv_viper
   required:
     - workflows
