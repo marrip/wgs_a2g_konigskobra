@@ -41,7 +41,7 @@ vardict:
   bed: "reference/vardict.bed"
 
 tools:
-  cnvkit: "docker://marrip/cnvkit:0.9.7"
+  cnvkit: "docker://marrip/cnvkit:0.9.9"
   cnvnator: "docker://marrip/cnvnator:0.4.1"
   common: "docker://marrip/common:1.1.0"
   cutadapt: "docker://marrip/cutadapt:3.3"
