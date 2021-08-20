@@ -3,7 +3,7 @@ from snakemake.utils import validate
 from snakemake.utils import min_version
 
 
-min_version("6.5.3")
+min_version("6.0.0")
 
 ### Set and validate config file
 
