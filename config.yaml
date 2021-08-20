@@ -1,7 +1,8 @@
-workflows:
-  wgs_std_viper: "1.0.2"
+modules:
+  wgs_std_viper: "main"
+  wgs_somatic_pon: "main"
   wgs_somatic_snp_viper: "main"
-  wgs_somatic_cnv_sv_viper: "1.0.0"
+  wgs_somatic_cnv_sv_viper: "main"
 
 samples: "samples.tsv"
 units: "units.tsv"
@@ -10,8 +11,8 @@ reference:
   adapter:
     fwd: "TACACTCTTTCCCTACACGACGCTCTTCCGATCT"
     rev: "GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT"
-  fasta: ""
   dct: ""
+  fasta: ""
   intervals: ""
   loci: ""
   sites: ""
@@ -23,6 +24,10 @@ cnvnator:
   pon: ""
 
 manta:
+  pon: ""
+
+mutect2:
+  gnomad: ""
   pon: ""
 
 tiddit:
