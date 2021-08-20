@@ -1,2 +1,3 @@
 sample	unit	run	lane	fq1	fq2
 NA12878	T	1	1	input/R1.fq.gz	input/R2.fq.gz
+NA12878	N	1	1	input/R1.fq.gz	input/R2.fq.gz
