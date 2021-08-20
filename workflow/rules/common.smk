@@ -169,7 +169,7 @@ def compile_output_list(wildcards):
     }
     for row in units.loc[samples.index, ["sample", "unit", "run", "lane"]].iterrows():
         output_list.append(
-            "analysis_output/%s/fastqc/%s_%s/%s_%s"
+            "analysis_output/%s/fastqc/%s_%s/%s/%s"
             % (
                 row[1]["sample"],
                 row[1]["sample"],
