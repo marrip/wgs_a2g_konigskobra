@@ -37,27 +37,56 @@ wildcard_constraints:
 
 
 module wgs_std_viper:
-    snakefile: "https://github.com/marrip/wgs_std_viper/raw/%s/workflow/Snakefile" % config["modules"]["wgs_std_viper"]
-    config: config
+    snakefile:
+        "https://github.com/marrip/wgs_std_viper/raw/%s/workflow/Snakefile" % config[
+            "modules"
+        ]["wgs_std_viper"]
+    config:
+        config
+
 
 use rule * from wgs_std_viper as wgs_std_*
 
+
 if config["mutect2"]["pon"] == "" or config["cnvkit"]["pon"] == "":
+
     module wgs_somatic_pon:
-        snakefile: "https://github.com/marrip/wgs_somatic_pon/raw/%s/workflow/Snakefile" % config["modules"]["wgs_somatic_pon"]
-        config: config
-    
+        snakefile:
+            "https://github.com/marrip/wgs_somatic_pon/raw/%s/workflow/Snakefile" % config[
+                "modules"
+            ][
+                "wgs_somatic_pon"
+            ]
+        config:
+            config
+
     use rule * from wgs_somatic_pon as wgs_somatic_pon_*
 
+
 module wgs_somatic_snp_viper:
-    snakefile: "https://github.com/marrip/wgs_somatic_snp_viper/raw/%s/workflow/Snakefile" % config["modules"]["wgs_somatic_snp_viper"]
-    config: config
+    snakefile:
+        "https://github.com/marrip/wgs_somatic_snp_viper/raw/%s/workflow/Snakefile" % config[
+            "modules"
+        ][
+            "wgs_somatic_snp_viper"
+        ]
+    config:
+        config
+
 
 use rule * from wgs_somatic_snp_viper as wgs_somatic_snp_*
 
+
 module wgs_somatic_cnv_sv_viper:
-    snakefile: "https://github.com/marrip/wgs_somatic_cnv_sv_viper/raw/%s/workflow/Snakefile" % config["modules"]["wgs_somatic_cnv_sv_viper"]
-    config: config
+    snakefile:
+        "https://github.com/marrip/wgs_somatic_cnv_sv_viper/raw/%s/workflow/Snakefile" % config[
+            "modules"
+        ][
+            "wgs_somatic_cnv_sv_viper"
+        ]
+    config:
+        config
+
 
 use rule * from wgs_somatic_cnv_sv_viper as wgs_somatic_cnv_sv_*
 
@@ -119,8 +148,12 @@ def compile_output_list(wildcards):
             "quality_distribution_metrics",
             "quality_distribution.pdf",
         ],
-        "collect_wgs_metrics": ["txt",],
-        "gather_bam_files": ["bam",],
+        "collect_wgs_metrics": [
+            "txt",
+        ],
+        "gather_bam_files": [
+            "bam",
+        ],
         "mosdepth": [
             "mosdepth.global.dist.txt",
             "mosdepth.region.dist.txt",
@@ -128,14 +161,24 @@ def compile_output_list(wildcards):
             "regions.bed.gz",
             "regions.bed.gz.csi",
         ],
-        "samtools_stats": ["txt",],
+        "samtools_stats": [
+            "txt",
+        ],
     }
     for row in units.loc[samples.index, ["sample", "unit", "run", "lane"]].iterrows():
         output_list.append(
             "analysis_output/%s/fastqc/%s_%s_%s_%s"
-            % (row[1]["sample"], row[1]["sample"], row[1]["unit"], row[1]["run"], row[1]["lane"])
+            % (
+                row[1]["sample"],
+                row[1]["sample"],
+                row[1]["unit"],
+                row[1]["run"],
+                row[1]["lane"],
+            )
         )
-    for row in units.loc[(samples.index), ["sample", "unit"]].drop_duplicates().iterrows():
+    for row in (
+        units.loc[(samples.index), ["sample", "unit"]].drop_duplicates().iterrows()
+    ):
         for key in files.keys():
             output_list = output_list + expand(
                 "analysis_output/{sample}/{tool}/{sample}_{unit}.{ext}",
