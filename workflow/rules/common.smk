@@ -21,8 +21,10 @@ validate(samples, schema="../schemas/samples.schema.yaml")
 
 ### Read and validate units file
 
-units = pd.read_table(config["units"], dtype=str).set_index(
-    ["sample", "unit", "run", "lane"], drop=False
+units = (
+    pd.read_table(config["units"], dtype=str)
+    .sort_values(["sample", "unit"], ascending=False)
+    .set_index(["sample", "unit", "run", "lane"], drop=False)
 )
 validate(units, schema="../schemas/units.schema.yaml")
 
