@@ -63,8 +63,6 @@ if config["mutect2"]["pon"] == "" or config["cnvkit"]["pon"] == "":
     use rule * from wgs_somatic_pon as wgs_somatic_pon_*
 
 
-
-
 module wgs_somatic_snp_viper:
     snakefile:
         "https://github.com/marrip/wgs_somatic_snp_viper/raw/%s/workflow/Snakefile" % config[
@@ -77,8 +75,6 @@ module wgs_somatic_snp_viper:
 
 
 use rule * from wgs_somatic_snp_viper as wgs_somatic_snp_*
-
-
 
 
 module wgs_somatic_cnv_sv_viper:
