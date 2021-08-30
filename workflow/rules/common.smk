@@ -110,6 +110,9 @@ def compile_output_list(wildcards):
             "filtered.vcf",
             "filtered.vcf.stats",
         ],
+	"multiqc": [
+            "html",
+        ],
         "tiddit": [
             "pon.vcf",
         ],
@@ -124,69 +127,4 @@ def compile_output_list(wildcards):
             tool=key,
             ext=files[key],
         )
-    files = {
-        "collect_multiple_metrics": [
-            "alignment_summary_metrics",
-            "base_distribution_by_cycle_metrics",
-            "base_distribution_by_cycle.pdf",
-            "insert_size_metrics",
-            "insert_size_histogram.pdf",
-            "quality_by_cycle_metrics",
-            "quality_by_cycle.pdf",
-            "quality_distribution_metrics",
-            "quality_distribution.pdf",
-        ],
-        "collect_alignment_summary_metrics": [
-            "alignment_summary_metrics",
-            "base_distribution_by_cycle_metrics",
-            "base_distribution_by_cycle.pdf",
-            "gc_bias.detail_metrics",
-            "gc_bias.summary_metrics",
-            "gc_bias.pdf",
-            "insert_size_metrics",
-            "insert_size_histogram.pdf",
-            "quality_by_cycle_metrics",
-            "quality_by_cycle.pdf",
-            "quality_distribution_metrics",
-            "quality_distribution.pdf",
-        ],
-        "collect_wgs_metrics": [
-            "txt",
-        ],
-        "gather_bam_files": [
-            "bam",
-        ],
-        "mosdepth": [
-            "mosdepth.global.dist.txt",
-            "mosdepth.region.dist.txt",
-            "mosdepth.summary.txt",
-            "regions.bed.gz",
-            "regions.bed.gz.csi",
-        ],
-        "samtools_stats": [
-            "txt",
-        ],
-    }
-    for row in units.loc[samples.index, ["sample", "unit", "run", "lane"]].iterrows():
-        output_list.append(
-            "analysis_output/%s/fastqc/%s_%s/%s/%s"
-            % (
-                row[1]["sample"],
-                row[1]["sample"],
-                row[1]["unit"],
-                row[1]["run"],
-                row[1]["lane"],
-            )
-        )
-    for row in (
-        units.loc[(samples.index), ["sample", "unit"]].drop_duplicates().iterrows()
-    ):
-        for key in files.keys():
-            output_list = output_list + expand(
-                "analysis_output/{sample}/{tool}/{sample}_{unit}.{ext}",
-                sample=row[1]["sample"],
-                tool=key,
-                unit=row[1]["unit"],
-                ext=files[key],
-            )
     return output_list
