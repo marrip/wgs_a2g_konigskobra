@@ -1,5 +1,7 @@
 **/analysis_output
 **/.cache
 **/.java
+**/modules
+**/__pycache__
 **/.snakemake
 **/subworkflows
