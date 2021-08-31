@@ -1,3 +1,4 @@
+from git_modules import git_module
 import pandas as pd
 from snakemake.utils import validate
 from snakemake.utils import min_version
@@ -40,9 +41,7 @@ wildcard_constraints:
 
 module wgs_std_viper:
     snakefile:
-        "https://github.com/marrip/wgs_std_viper/raw/%s/workflow/Snakefile" % config[
-            "modules"
-        ]["wgs_std_viper"]
+        git_module(config["modules"]["wgs_std_viper"])
     config:
         config
 
@@ -54,11 +53,7 @@ if config["mutect2"]["pon"] == "" or config["cnvkit"]["pon"] == "":
 
     module wgs_somatic_pon:
         snakefile:
-            "https://github.com/marrip/wgs_somatic_pon/raw/%s/workflow/Snakefile" % config[
-                "modules"
-            ][
-                "wgs_somatic_pon"
-            ]
+            git_module(config["modules"]["wgs_somatic_pon"])
         config:
             config
 
@@ -67,11 +62,7 @@ if config["mutect2"]["pon"] == "" or config["cnvkit"]["pon"] == "":
 
 module wgs_somatic_snp_viper:
     snakefile:
-        "https://github.com/marrip/wgs_somatic_snp_viper/raw/%s/workflow/Snakefile" % config[
-            "modules"
-        ][
-            "wgs_somatic_snp_viper"
-        ]
+        git_module(config["modules"]["wgs_somatic_snp_viper"])
     config:
         config
 
@@ -81,11 +72,7 @@ use rule * from wgs_somatic_snp_viper as wgs_somatic_snp_*
 
 module wgs_somatic_cnv_sv_viper:
     snakefile:
-        "https://github.com/marrip/wgs_somatic_cnv_sv_viper/raw/%s/workflow/Snakefile" % config[
-            "modules"
-        ][
-            "wgs_somatic_cnv_sv_viper"
-        ]
+        git_module(config["modules"]["wgs_somatic_cnv_sv_viper"])
     config:
         config
 
@@ -110,7 +97,7 @@ def compile_output_list(wildcards):
             "filtered.vcf",
             "filtered.vcf.stats",
         ],
-	"multiqc": [
+	      "multiqc": [
             "html",
         ],
         "tiddit": [

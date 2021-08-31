@@ -2,18 +2,52 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-  workflows:
+  modules:
     type: object
     properties:
       wgs_std_viper:
-        type: string
+        type: object
+        properties:
+          url:
+            type: string
+          tag:
+            type: string
+        required:
+          - url
+          - tag
+      wgs_somatic_pon:
+        type: object
+        properties:
+          url:
+            type: string
+          tag:
+            type: string
+        required:
+          - url
+          - tag
       wgs_somatic_snp_viper:
-        type: string
+        type: object
+        properties:
+          url:
+            type: string
+          tag:
+            type: string
+        required:
+          - url
+          - tag
       wgs_somatic_cnv_sv_viper:
-        type: string
+        type: object
+        properties:
+          url:
+            type: string
+          tag:
+            type: string
+        required:
+          - url
+          - tag
     required:
       - wgs_std_viper
       - wgs_somatic_snp_viper
       - wgs_somatic_cnv_sv_viper
-  required:
-    - workflows
+required:
+  - modules
