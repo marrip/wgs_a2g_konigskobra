@@ -16,7 +16,10 @@ def clone_or_pull_repo(url):
     git_dir = os.path.join("modules", strip_url(url))
     if os.path.exists(git_dir):
         repo = git.Git(git_dir)
-        repo.checkout("main")
+        try:
+            repo.checkout("main")
+        except GitCommandError:
+            pass
         print("Pull changes for module repository %s" % strip_url(url))
         repo.pull()
         return repo
