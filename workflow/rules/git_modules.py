@@ -30,4 +30,12 @@ def git_module(config):
     repo = clone_or_pull_repo(config["url"])
     print("Checkout %s for module repository %s" % (config["tag"], strip_url(config["url"])))
     repo.checkout(config["tag"])
-    return os.path.join(os.getcwd(), "modules", strip_url(config["url"]), "workflow", "Snakefile")
+    return
+
+def git_modules(config):
+    for module in config:
+        git_module(config[module])
+    return
+
+def path_snakefile(module):
+    return os.path.join(os.getcwd(), "modules", module, "workflow", "Snakefile")
