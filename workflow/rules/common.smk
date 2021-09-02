@@ -1,4 +1,4 @@
-from git_modules import git_modules
+from git_modules import git_modules, path_snakefile
 import pandas as pd
 from snakemake.utils import validate
 from snakemake.utils import min_version
