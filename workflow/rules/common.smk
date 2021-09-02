@@ -39,9 +39,12 @@ wildcard_constraints:
 ### Import modules
 
 
+snk_file = git_module(config["modules"]["wgs_std_viper"])
+
+
 module wgs_std_viper:
     snakefile:
-        git_module(config["modules"]["wgs_std_viper"])
+        snk_file
     config:
         config
 
@@ -51,18 +54,23 @@ use rule * from wgs_std_viper as wgs_std_*
 
 if config["mutect2"]["pon"] == "" or config["cnvkit"]["pon"] == "":
 
+    snk_file = git_module(config["modules"]["wgs_somatic_pon"])
+
     module wgs_somatic_pon:
         snakefile:
-            git_module(config["modules"]["wgs_somatic_pon"])
+            snk_file
         config:
             config
 
     use rule * from wgs_somatic_pon as wgs_somatic_pon_*
 
 
+snk_file = git_module(config["modules"]["wgs_somatic_snp_viper"])
+
+
 module wgs_somatic_snp_viper:
     snakefile:
-        git_module(config["modules"]["wgs_somatic_snp_viper"])
+        snk_file
     config:
         config
 
@@ -70,9 +78,12 @@ module wgs_somatic_snp_viper:
 use rule * from wgs_somatic_snp_viper as wgs_somatic_snp_*
 
 
+snk_file = git_module(config["modules"]["wgs_somatic_cnv_sv_viper"])
+
+
 module wgs_somatic_cnv_sv_viper:
     snakefile:
-        git_module(config["modules"]["wgs_somatic_cnv_sv_viper"])
+        snk_file
     config:
         config
 
@@ -97,7 +108,7 @@ def compile_output_list(wildcards):
             "filtered.vcf",
             "filtered.vcf.stats",
         ],
-	      "multiqc": [
+        "multiqc": [
             "html",
         ],
         "tiddit": [
