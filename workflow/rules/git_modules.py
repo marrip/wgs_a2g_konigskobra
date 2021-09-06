@@ -12,6 +12,12 @@ def create_dir():
 def strip_url(url):
     return url.split("/")[-1].replace(".git", "")
 
+def check_lock(url):
+    if os.path.exists(os.path.join(os.getcwd(), "modules", strip_url(url), ".git", "index.lock")):
+        return True
+    else:
+        return False
+
 def clone_or_pull_repo(url):
     git_dir = os.path.join("modules", strip_url(url))
     if os.path.exists(git_dir):
@@ -27,6 +33,8 @@ def clone_or_pull_repo(url):
 
 def git_module(config):
     create_dir()
+    if check_lock(config["url"]):
+        return
     repo = clone_or_pull_repo(config["url"])
     print("Checkout %s for module repository %s" % (config["tag"], strip_url(config["url"])))
     repo.checkout(config["tag"])

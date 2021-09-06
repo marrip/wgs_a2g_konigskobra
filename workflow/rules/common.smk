@@ -39,9 +39,7 @@ wildcard_constraints:
 ### Import modules
 
 
-print("About to call function")
 git_modules(config["modules"])
-print("Called function")
 
 
 module wgs_std_viper:
