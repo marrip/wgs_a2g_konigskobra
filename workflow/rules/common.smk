@@ -116,9 +116,9 @@ def compile_output_list(wildcards):
         "tiddit": [
             "pon.vcf",
         ],
-        "vardict": [
-            "vcf",
-        ],
+        #"vardict": [
+        #    "vcf",
+        #],
     }
     for key in files.keys():
         output_list = output_list + expand(
