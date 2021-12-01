@@ -27,6 +27,7 @@ manta:
   pon: "reference/exclude.bed"
 
 mutect2:
+  panel: "reference/exclude.bed"
   gnomad: "reference/af-only-gnomad.vcf"
   pon: "reference/mutect2_somatic_pon.vcf"
 

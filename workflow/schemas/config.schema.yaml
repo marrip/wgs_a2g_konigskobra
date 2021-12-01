@@ -2,7 +2,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-  workflows:
+  modules:
     type: object
     properties:
       wgs_std_viper:
@@ -16,4 +16,13 @@ properties:
       - wgs_somatic_snp_viper
       - wgs_somatic_cnv_sv_viper
   required:
-    - workflows
+    - modules
+  mutect2:
+    type: object
+    properties:
+      panel:
+        type: string
+    required:
+      - panel
+  required:
+    - mutect2

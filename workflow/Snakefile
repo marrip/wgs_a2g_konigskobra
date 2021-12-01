@@ -1,4 +1,5 @@
 include: "rules/common.smk"
+include: "rules/panel_filter.smk"
 
 
 rule all:

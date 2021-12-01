@@ -109,6 +109,7 @@ def compile_output_list(wildcards):
         "mutect2": [
             "filtered.vcf",
             "filtered.vcf.stats",
+            "panel.vcf",
         ],
 	"multiqc": [
             "html",

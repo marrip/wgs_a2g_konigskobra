@@ -27,6 +27,7 @@ manta:
   pon: ""
 
 mutect2:
+  panel: ""
   gnomad: ""
   pon: ""
 
