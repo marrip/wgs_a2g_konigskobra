@@ -20,9 +20,12 @@ properties:
   mutect2:
     type: object
     properties:
-      panel:
+      aml:
+        type: string
+      all:
         type: string
     required:
-      - panel
+      - aml
+      - all
   required:
     - mutect2
