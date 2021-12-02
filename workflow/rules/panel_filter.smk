@@ -13,7 +13,6 @@ rule panel_filter_vcf:
     shell:
         """
         (bedtools intersect \
-        -v \
         -header \
         -a {input.vcf} -b {input.bed} > {output}) &> {log}
         """
