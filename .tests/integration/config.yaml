@@ -24,6 +24,8 @@ cnvnator:
   pon: "reference/exclude.bed"
 
 manta:
+  aml: "reference/exclude.bed"
+  all: "reference/exclude.bed"
   pon: "reference/exclude.bed"
 
 mutect2:
@@ -36,6 +38,8 @@ smoove:
   exclude: "reference/exclude.bed"
 
 tiddit:
+  aml: "reference/exclude.bed"
+  all: "reference/exclude.bed"
   pon: "reference/exclude.bed"
 
 vardict:

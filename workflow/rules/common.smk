@@ -104,11 +104,12 @@ def compile_output_list(wildcards):
             "pon.vcf",
         ],
         "manta": [
-            "pon.vcf",
+            "panel.aml.vcf",
+            "panel.all.vcf",
         ],
         "mutect2": [
-            "filtered.vcf",
-            "filtered.vcf.stats",
+            "vcf",
+            "vcf.stats",
             "panel.aml.vcf",
             "panel.all.vcf",
         ],
@@ -116,7 +117,12 @@ def compile_output_list(wildcards):
             "html",
         ],
         "tiddit": [
-            "pon.vcf",
+            "panel.aml.vcf",
+            "panel.all.vcf",
+        ],
+        "vep": [
+            "panel.aml.vcf",
+            "panel.all.vcf",
         ],
         #"vardict": [
         #    "vcf",

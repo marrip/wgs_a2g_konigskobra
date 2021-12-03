@@ -24,6 +24,8 @@ cnvnator:
   pon: ""
 
 manta:
+  aml: ""
+  all: ""
   pon: ""
 
 mutect2:
@@ -33,6 +35,8 @@ mutect2:
   pon: ""
 
 tiddit:
+  aml: ""
+  all: ""
   pon: ""
 
 vardict:
