@@ -60,4 +60,4 @@ tools:
   python: "docker://python:3.10-rc-slim-buster"
   tiddit: "docker://marrip/tiddit:2.12.1"
   vardict: "docker://marrip/vardict:1.8.2"
-  vep: "docker://marrip/vardict:104.3"
+  vep: "docker://marrip/vep:104.3"
